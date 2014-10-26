@@ -26,7 +26,7 @@
 #include <errno.h>
 
 #include "portab.h"
-
+#include "config.h"
 #include "fillup_cfg.h"
 #include "parameters.h"
 #include "services.h"
@@ -263,19 +263,9 @@ displayVersion
 )
 {
     static const char *versionString = 
-                      "This is fillup, version %1.2f\n\n";
+                      "This is fillup, version %s\n\n";
 
-    if( ( int )( strlen( versionString ) - 1 ) !=
-        fprintf( stderr, versionString, VERSION ) )
-    {
-int res= fprintf( stderr, versionString, VERSION );
-	
-fprintf (stderr,"strlen: %d, res: %d\n", strlen( versionString ), res);
-	
-        fillup_exception( __FILE__, __LINE__, ServiceException, 
-                          "displayVersion" );
-        exitOnFailure( );
-    }
+        fprintf( stderr, versionString, VERSION );
 }
 
 /*------------------ getCardinal -------------------*/
