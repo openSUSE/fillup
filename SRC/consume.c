@@ -140,7 +140,7 @@ consumeUptoBreak
         {
             break;           /* line break detected */
         }
-        else if( *buffer == EOF )
+        else if( *buffer == 0 )
         {
             break;          /* End-Of-File detected */
         }

@@ -19,7 +19,7 @@
 /*--------------------------------- IMPORTS ----------------------------------*/
 
 #include <ctype.h>
-
+#include <unistd.h>
 #include "portab.h"
 #include "variableblock.h"
 #include "parameters.h"
@@ -296,6 +296,7 @@ createAdministrationInfo
     unsigned long      Size;
     char             * delimiterString;
     char               delimiterChar;
+    void             * ptr;
 
     queryStringParameter( Delimiter, &delimiterString );
     delimiterChar = delimiterString[ 0 ];
@@ -305,23 +306,25 @@ createAdministrationInfo
         countDelimiters( delimiterChar, baseFileBuffer, baseFileBufferLength );
     baseFileBlocksLength++;    /* add possible trailing comment */
     Size = baseFileBlocksLength * sizeof( VariableBlock_t );
-    if( Success != allocateBuffer( Size, ( void ** )&baseFileBlock ) )
+    if( Success != allocateBuffer( Size, &ptr ) )
     {
         fillup_exception( __FILE__, __LINE__, ConfigurationException,
                           "createAdministrationInfo" );
         exitOnFailure( );
     }
+    baseFileBlock = ( VariableBlock_t * )ptr;
 
     additionalFileBlocksLength = countDelimiters( 
         delimiterChar, additionalFileBuffer, additionalFileBufferLength );
     additionalFileBlocksLength++;    /* add possible trailing comment */
     Size = additionalFileBlocksLength * sizeof( VariableBlock_t );
-    if( Success != allocateBuffer( Size, ( void ** )&additionalFileBlock ) )
+    if( Success != allocateBuffer( Size, &ptr ) )
     {
         fillup_exception( __FILE__, __LINE__, ConfigurationException,
                           "createAdministrationInfo" );
         exitOnFailure( );
     }
+    additionalFileBlock = ( VariableBlock_t * )ptr;
 
     if( queryParameter( ForbiddenFile ) == TRUE )
     {
@@ -329,12 +332,13 @@ createAdministrationInfo
             delimiterChar, forbiddenFileBuffer, forbiddenFileBufferLength );
         forbiddenFileBlocksLength++;    /* add possible trailing comment */
         Size = forbiddenFileBlocksLength * sizeof( VariableBlock_t );
-        if( Success != allocateBuffer( Size, ( void ** )&forbiddenFileBlock ) )
+        if( Success != allocateBuffer( Size, &ptr ) )
         {
             fillup_exception( __FILE__, __LINE__, ConfigurationException,
                               "createAdministrationInfo" );
             exitOnFailure( );
         }
+        forbiddenFileBlock = ( VariableBlock_t * )ptr;
     }
 }
 
@@ -477,8 +481,8 @@ getVariable
     getVBeginOfBlock( outputBuffer, &Line );
     Line = Line + getVLength( outputBuffer );
     LinePointer = Line;
-    for( lineIndex = 0; 
-         ( *LinePointer != EOF ) && ( *LinePointer != '\n' ); 
+    for( lineIndex = 0;
+         ( *LinePointer != 0 ) && ( *LinePointer != '\n' ) ;
          lineIndex++ )
     {
         LinePointer++;  /* concerns only the current line */
@@ -1768,6 +1772,8 @@ writeOutput
                 }
                 listPointer++;
             }    
+            if(fflush( filePointer ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot flush stream");
+            if(fdatasync ( fileno(filePointer) ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot sync stream");
             closeFile( filePointer );
         }
     }
@@ -1830,7 +1836,9 @@ writeOutput
                 default: break;
             }
             listPointer++;
-        }    
+        }
+        if(fflush( filePointer ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot flush stream");
+        if(fdatasync ( fileno(filePointer) ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot sync stream");
         closeFile( filePointer );
     }
 }

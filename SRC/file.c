@@ -35,18 +35,34 @@ readFile
     File_t                      returnValue;
     FILE                      * filePointer;
     long                        fileLength;
-    char                      * buffer = NULL;
 
     if( FileOpened == openFileForReading( filename, &filePointer ) )
     {
         if( Success == getFileLength( filePointer, &fileLength ) )
         {
-            if( Success ==
-                allocateBuffer( fileLength, ( void ** )&buffer ) )
+            void              * ptr;
+
+            /*
+             * Allocate one byte more if a newline must be added
+             */
+            if( Success == allocateBuffer( fileLength + 1 , &ptr ) )
             {
-                if( Success == 
-                    readFileToBuffer( filePointer, fileLength, &buffer ) )
-                {  
+                char          * buffer = ( char * )ptr;
+
+                if( Success == readFileToBuffer( filePointer, fileLength, &buffer ) )
+                {
+
+                    if ( FALSE == queryParameter( IgnoreEOF ) )
+                    {
+                        char  * eof = (buffer + fileLength - 1);
+
+                        if ( *eof != '\n' )
+                        {
+                            *( eof + 1 ) = '\n';
+                            fileLength++;
+                        }
+                    }
+
                     addToWatchdog( fileLength );
                     associateBuffer( fileSpecifier, fileLength, &buffer );
                     returnValue = FileOperationsSuccessful;

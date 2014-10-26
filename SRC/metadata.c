@@ -17,7 +17,7 @@
 /*--------------------------------- IMPORTS ----------------------------------*/
 
 #include <stdio.h>
-
+#include <unistd.h>
 #include "variableblock.h"
 #include "services.h"
 #include "parser.h"
@@ -392,7 +392,8 @@ setMetadataInfo
                                 logfile );
                     fprintf( logfile, ">\n\n" );
                 }
-    
+                if(fflush( logfile ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot flush stream");
+                if(fdatasync( fileno(logfile) ) != 0) fillup_exception( __FILE__, __LINE__, ServiceException, "cannot sync stream");
                 closeFile( logfile );
             }
         }

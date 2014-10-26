@@ -368,6 +368,13 @@ queryParameter
             }
             break;
 
+        case IgnoreEOF:
+            if( parameterIgnoreEOF == IsSet )
+            {
+                returnValue = TRUE;
+            }
+            break;
+
         case IgnoreDefinites:
             if( parameterIgnoreDefinites == IsSet )
             {

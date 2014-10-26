@@ -444,8 +444,9 @@ readFileToBuffer
 
     if( 0 == fseek( filePointer, 0L, SEEK_SET ) )
     {
-        if( fileLength == 
-            ( long )fread( *fileBuffer, sizeof( char ), fileLength, filePointer ) )
+        if(    ( fileLength == 
+                 ( long )fread( *fileBuffer, sizeof( char ), fileLength, filePointer ) )
+            && ( 0 == ferror( filePointer ) ) )
         {
             returnValue = Success;
         }
@@ -558,23 +559,22 @@ dumpBlock
 Service_t
 allocateBuffer
 (
-    long            fileLength,                /* in */
+    long            Length,                   /* in */
     void         ** buffer                    /* out */
 )
 {
     Service_t       returnValue;
 
-    *buffer = malloc( fileLength + 1 );
+    *buffer = malloc( Length + 1 );
     if( *buffer == NULL )
     {
-        fillup_exception( __FILE__, __LINE__, ServiceException, 
-                          "malloc" );
+        fillup_exception( __FILE__, __LINE__, ServiceException, "malloc" );
         returnValue = Error;
     }
     else
     {
         /* reset the buffer */
-        ( void )memset( *buffer, EOF, fileLength + 1 );
+        ( void )memset( *buffer, 0, Length + 1 );
 
         returnValue = Success;
     }
