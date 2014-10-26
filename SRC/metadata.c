@@ -165,6 +165,10 @@ checkForMetadataKeyword
     MetadataKeyword_t            loop;
     long                         offset;
 
+    /* Both return values are explicitely initialized   */
+    Result = Metadata_Number;
+    *length = 0;
+
     offset = 0;
     offset += consumeBlanksOrTabs( &precedingComment[ offset ], variableLength - offset );
     for( loop=0; loop<Metadata_Number; loop++ )

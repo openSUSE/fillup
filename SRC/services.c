@@ -251,7 +251,7 @@ displayCharacter
     char            character                /* in */
 )
 {
-    ( void )fputc( character, stderr );
+    ( void )fputc( ( int )character, stderr );
 }
 
 /*---------------- displayVersion ------------------*/

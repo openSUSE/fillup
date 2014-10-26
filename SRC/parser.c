@@ -106,6 +106,7 @@ getVariable
     long                         remainingInputChars   /* in */
 );
 
+#if DEBUG
 static
 void
 printBlockInfo
@@ -121,13 +122,13 @@ printList
     VariableBlock_t            * list         /* in */
 );
 
-
 static
 void
 displayVerboseValue
 ( 
     long                         verboseValue   /* in */
 );
+#endif
 
 static
 void
@@ -597,6 +598,7 @@ getVariable
     }
 }
 
+#if DEBUG
 /*---------------- printBlockInfo ------------------*/
 
 static
@@ -668,6 +670,7 @@ printList
         list = getVSucc( list );
     }
 }
+#endif
 
 /*------------ displayVerboseString ---------------*/
 void
@@ -682,6 +685,7 @@ displayVerboseString
     }
 }
 
+#if DEBUG
 /*------------ displayVerboseValue ----------------*/
 
 static
@@ -696,6 +700,7 @@ displayVerboseValue
         displayValue( verboseValue );
     }
 }
+#endif
 
 /*------------ displayVerboseBuffer ---------------*/
 
@@ -907,6 +912,12 @@ parseFile
             break;
 
          default:
+            /* next four statements are inserted to eliminate gcc warnings */
+            inputBuffer = (char *)NULL;
+            inputLength = 0;
+            outputBuffer = (VariableBlock_t *)NULL;
+            outputLength = 0;
+
              fillup_exception( __FILE__, __LINE__, DefaultBranchException,
                                "parseFile" );
              break;
