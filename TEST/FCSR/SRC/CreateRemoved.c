@@ -48,7 +48,7 @@ int main
         printf( "\n" );
         index = 0;
 
-        if( argument & 0x2L ) return;   /* single variable but removed */
+        if( argument & 0x2L ) return 0;   /* single variable but removed */
 
         argument = argument >> 2;
         while( ( index < numberOfKeywords ) && ( argument > 0 ) )
