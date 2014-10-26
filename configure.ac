@@ -29,7 +29,6 @@ AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
 AC_CANONICAL_HOST
-PKG_PROG_PKG_CONFIG([0.20])
 AC_PROG_EGREP
 AC_PROG_SED
 
@@ -37,9 +36,9 @@ AC_PROG_SED
 # Check for cflags
 # ================
 AC_ARG_ENABLE([werror],
-	[AS_HELP_STRING([--disable-werror], [Treat all warnings as errors, useful for development])],
+	[AS_HELP_STRING([--enable-werror], [Treat all warnings as errors, useful for development])],
 	[enable_werror="$enableval"],
-	[enable_werror=yes]
+	[enable_werror=no]
 )
 AS_IF([test x"$enable_werror" != "xno"], [
 	CFLAGS="$CFLAGS -Werror"
