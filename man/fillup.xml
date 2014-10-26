@@ -17,548 +17,197 @@
     </refpurpose>
   </refnamediv>
   <refsynopsisdiv>
-    <refsynopsisdivinfo>
-      <date>2012-01-27</date>
-    </refsynopsisdivinfo>
     <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="plain">help</arg>
+      <command>fillup</command>
+      <arg choice="opt">options</arg>
+      <arg choice="plain">basefile</arg>
+      <arg choice="plain">addfile</arg>
+      <arg choice="plain">outfile</arg>
     </cmdsynopsis>
     <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">list-repos</arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="plain">repo-infos</arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="plain">show-root</arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="plain">get-content <replaceable>id</replaceable></arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="plain">--input-file <replaceable>path/to/file</replaceable></arg>
-      <arg choice="plain">--input-type <replaceable>mime/type</replaceable></arg>
-      <arg choice="opt">--input-name <replaceable>name.ext</replaceable></arg>
-      <arg choice="plain">set-content <replaceable>id</replaceable></arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="opt">--object-type <replaceable>some:cmistype</replaceable></arg>
-      <arg choice="opt" rep="repeat">--object-property <replaceable>prop-id=prop-value</replaceable></arg>
-      <arg choice="plain">create-folder <replaceable>parent-id name</replaceable></arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="plain">--input-file <replaceable>path/to/file</replaceable></arg>
-      <arg choice="plain">--input-type <replaceable>mime/type</replaceable></arg>
-      <arg choice="opt">--input-name <replaceable>name.ext</replaceable></arg>
-      <arg choice="opt">--object-type <replaceable>some:cmistype</replaceable></arg>
-      <arg choice="opt" rep="repeat">--object-property <replaceable>prop-id=prop-value</replaceable></arg>
-      <arg choice="plain">create-document <replaceable>parent-id name</replaceable></arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="opt" rep="repeat">--object-property <replaceable>prop-id=prop-value</replaceable></arg>
-      <arg choice="plain">update-object <replaceable>object-id</replaceable></arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <group choice="plain">
-        <arg>type-by-id</arg>
-        <arg>show-by-id</arg>
-        <arg>show-by-path</arg>
-        <arg>delete</arg>
-      </group>
-      <arg rep="repeat" choice="plain">
-        <replaceable>arg</replaceable>
-      </arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <group choice="plain">
-        <arg>checkout</arg>
-        <arg>cancel-checkout</arg>
-        <arg>get-versions</arg>
-      </group>
-      <arg choice="plain">
-        <replaceable>arg</replaceable>
-      </arg>
-    </cmdsynopsis>
-    <cmdsynopsis>
-      <command>cmis-client</command>
-      <arg choice="opt">-v</arg>
-      <arg choice="opt">-u <replaceable>login</replaceable></arg>
-      <arg choice="opt">-p <replaceable>secret</replaceable></arg>
-      <arg choice="plain">--url <replaceable>url://to/binding</replaceable></arg>
-      <arg choice="plain">-r <replaceable>repo-id</replaceable></arg>
-      <arg choice="opt">--input-file <replaceable>path/to/file</replaceable></arg>
-      <arg choice="opt">--input-type <replaceable>mime/type</replaceable></arg>
-      <arg choice="opt">--input-name <replaceable>name.ext</replaceable></arg>
-      <arg choice="opt" rep="repeat">--object-property <replaceable>prop-id=prop-value</replaceable></arg>
-      <arg choice="opt">--major</arg>
-      <arg choice="opt">--message</arg>
-      <arg choice="plain">checkin <replaceable>pwc id</replaceable></arg>
+      <command>fillup</command>
+      <arg choice="opt">options</arg>
+      <arg choice="plain">basefile</arg>
+      <arg choice="plain">addfile</arg>
     </cmdsynopsis>
   </refsynopsisdiv>
   <refsect1>
-    <refsect1info>
-      <date>2012-01-27</date>
-    </refsect1info>
     <title>DESCRIPTION</title>
-    <para>
-                        The <command>cmis-client</command> tool sends queries over the net to a CMIS-enabled server
-                        to access or modify its content. It is originally demonstrating what libcmis is capable of.
-        </para>
+    <para><command>fillup</command> merges input files into one resulting output file. Usually, each file is a configuration file.</para>
+    <para><command>fillup</command> merges files which are holding variables (ie configuration or environment variables). A variable is defined by an entity composed of a preceding comment, a variable name, an assignment delim‐
+                iter, and a related variable value. A variable is determined by its variable name.</para>
+    <para>A preceding comment is optional. An assignment delimiter may be optional, but if there is an assignment delimiter, a variable name must precede it. The last entity may be composed only of a comment.</para>
+    <para>Only if variables are included in both input files (basefile and addfile) fillup has to select one of the variables. Otherwise, if variables are included only in one of the input files they are added
+                to the resulting output file (with the exception of the <replaceable class="parameter">-i|--ignoreDefinites</replaceable> option).</para>
+    <para>The functionality is now controlled by a parameter which determines whether a variable included both in the basefile and in the addfile is taken from the former or from the latter. Furthermore, a
+                parameter controls whether the variable is removed from a copy of the basefile.</para>
+    <para>To keep the fillup v1.04 functionality, the outputfile parameter can be omitted -- this means the resulting output file is named exactly like the first input file name (basefile = outputfile).</para>
+    <para>If variables should be removed from the basefile, the basefile is not touched, but the result is written to basefile.new.</para>
+    <para>If basefile includes a header as part of the first variable this header is preserved only for the outputfile if after the header an empty line follows.</para>
+    <para>Starting with version 1.20 handling of metadata for /etc/sysconfig files is included. Metadata is part of preceding comment, each metadata line begins with double hash ("##"). A metadata line contains a pair keyword:value. The value itself can be described on several lines, each beginning with double hash and the optional keyword.</para>
   </refsect1>
   <refsect1>
     <title>OPTIONS</title>
-    <refsect2>
-      <title>GLOBAL OPTIONS</title>
-      <variablelist>
-        <varlistentry>
-          <term>-v, --verbose</term>
-          <listitem>
-            <para>
-                                                        Shows a lot of information to monitor what is happening behind the scene.
-                                                        This helps a lot to debug libcmis.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--help</term>
-          <listitem>
-            <para>
-                                                        Show the help and exit. This is equivalent to use the help command.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--url <replaceable class="parameter">url://to/binding</replaceable></term>
-          <listitem>
-            <para><replaceable class="parameter">url://to/binding</replaceable> needs to point to the service document of
-              either AtomPub or WebService binding.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>-r,--repository <replaceable class="parameter">repo-id</replaceable></term>
-          <listitem>
-            <para>
-              Operate on the <replaceable class="parameter">repo-id</replaceable> CMIS repository.
-              If there is only one repository on the server, this parameter is not needed and that
-              repository will be automatically selected. Use this parameter if there are several
-              repositories on the server.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>-u,--username <replaceable class="parameter">login</replaceable></term>
-          <listitem>
-            <para>
-                                                        Connect as <replaceable class="parameter">login</replaceable> to the CMIS server.
-                                                        If not provided connect anonymously.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>-p,--password <replaceable class="parameter">secret</replaceable></term>
-          <listitem>
-            <para>
-                                                        Use <replaceable class="parameter">secret</replaceable> to authenticate on the CMIS server.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--no-ssl-check</term>
-          <listitem>
-            <para>
-                            Disables the SSL certificate verifications. Lowers the security, but may be handy
-                            to work around bad certificates like expired or self-signed ones.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--proxy <replaceable class="parameter">url</replaceable></term>
-          <listitem>
-            <para>
-                Use <replaceable class="parameter">url</replaceable> as the HTTP proxy.
-                Setting this value will override the system proxy settings.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--proxy-username <replaceable class="parameter">login</replaceable></term>
-          <listitem>
-            <para>
-                                                        Use <replaceable class="parameter">login</replaceable> to authenticate on the HTTP proxy.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--proxy-password <replaceable class="parameter">secret</replaceable></term>
-          <listitem>
-            <para>
-                                                        Use <replaceable class="parameter">secret</replaceable> to authenticate on the HTTP proxy.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--noproxy <replaceable class="parameter">list</replaceable></term>
-          <listitem>
-            <para>
-                Proxy settings won't apply to hostnames and domain names listed 
-                in <replaceable class="parameter">list</replaceable>.
-                This value is a coma separated list.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-client-id <replaceable class="parameter">client_id</replaceable></term>
-          <listitem>
-              <para>
-                  Application client id to use in the OAuth2 authentication flow.
-              </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-client-secret <replaceable class="parameter">client_secret</replaceable></term>
-          <listitem>
-              <para>
-                  Application client secret to use in the OAuth2 authentication flow.
-              </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-auth-url <replaceable class="parameter">url</replaceable></term>
-          <listitem>
-              <para>
-                  URL to authenticate the user in the OAuth2 authentication flow.
-              </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-token-url <replaceable class="parameter">url</replaceable></term>
-          <listitem>
-              <para>
-                  URL to authenticate the application in the OAuth2 authentication flow.
-                  The access and refresh tokens are provided by this URL.
-              </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-redirect-uri <replaceable class="parameter">uri</replaceable></term>
-          <listitem>
-              <para>
-                  URI where the OAuth2 authentication flow will redirect after a sucessful
-                  authentication.
-              </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--oauth2-scope <replaceable class="parameter">scope</replaceable></term>
-          <listitem>
-              <para>
-                  Requested scope to access in the OAuth2 authentication flow.
-              </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsect2>
-    <refsect2>
-      <title>MODIFICATION OPERATIONS OPTIONS</title>
-      <variablelist>
-        <varlistentry>
-          <term>--input-file <replaceable class="parameter">path/to/file</replaceable></term>
-          <listitem>
-            <para>
-              Upload <replaceable class="parameter">path/to/file</replaceable> as the new content stream
-              of the object.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--input-type <replaceable class="parameter">mime/type</replaceable></term>
-          <listitem>
-            <para>
-              Set the mime type of the new content stream of the object to <replaceable class="parameter">mime/type</replaceable>.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--input-name <replaceable class="parameter">name.ext</replaceable></term>
-          <listitem>
-            <para>
-              Set the remote content stream filename of the new content stream of the object to <replaceable class="parameter">name.ext</replaceable>.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--object-type <replaceable class="parameter">some:cmistype</replaceable></term>
-          <listitem>
-            <para>
-              Set the object type of the CMIS object to be created to <replaceable class="parameter">some:cmistype</replaceable>.
-              This is the equivalent of --object-property cmis:objectTypeId=some:cmistype.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--object-property <replaceable class="parameter">prop-id=prop-value</replaceable></term>
-          <listitem>
-            <para>
-              Set a property to be updated or added to the CMIS object. <replaceable class="parameter">prop-id</replaceable> is
-              the property definition id and <replaceable class="parameter">prop-value</replaceable> is the value to set on it.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>--major</term>
-          <listitem>
-            <para>
-              Create a major version when performing a checkin.
-                                                </para>
-          </listitem>
-        </varlistentry>
-        <varlistentry>
-          <term>-m, --message <replaceable class="parameter">message</replaceable></term>
-          <listitem>
-            <para>
-              Set the checking message.
-                                                </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsect2>
-    <refsect2>
-      <title>COMMANDS</title>
-      <variablelist>
-        <varlistentry>
-            <term>help</term>
-            <listitem>
-            <para>
-                                                    Show the help and exit.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>list-repos</term>
-            <listitem>
-            <para>
-                                                    List the repositories available on the server.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>repo-infos</term>
-            <listitem>
-            <para>
-                                                    Displays the informations and capabilities of the selected repository
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>show-root</term>
-            <listitem>
-            <para>
-                                                    Displays the root node infos and children.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>get-content <replaceable class="parameter">id</replaceable></term>
-            <listitem>
-            <para>
-                                                    Download the content of the CMIS object corresponding to 
-                                                    <replaceable class="parameter">id</replaceable> in the current directory.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>set-content <replaceable class="parameter">id</replaceable></term>
-            <listitem>
-            <para>
-                                                    Upload a file as the content stream of the CMIS object corresponding to 
-                                                    <replaceable class="parameter">id</replaceable>.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>create-folder <replaceable class="parameter">parent-id name</replaceable></term>
-            <listitem>
-            <para>
-                Create a sub folder in folder <replaceable class="parameter">parent-id</replaceable>
-                named <replaceable class="parameter">name</replaceable>. The default type of the folder
-                to create is cmis:folder, but this can be changed using --object-type option.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>create-document <replaceable class="parameter">parent-id name</replaceable></term>
-            <listitem>
-            <para>
-                Create a document in folder <replaceable class="parameter">parent-id</replaceable>
-                named <replaceable class="parameter">name</replaceable>. The default type of the document
-                to create is cmis:document, but this can be changed using --object-type option.
-            </para>
-            <para>
-                Note that the --input-file and --input-type may be mandatory, depending on the type of
-                the document to create and its constraints.
-            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>update-object <replaceable class="parameter">object-id</replaceable></term>
-            <listitem>
-            <para>
-                Replace the writeable properties given with --object-property option on the object
-                matching id <replaceable class="parameter">object-id</replaceable>.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>type-by-id <replaceable class="parameter">arg...</replaceable></term>
-            <listitem>
-            <para>
-                                                    Displays the infos and children (if any) of all the CMIS types corresponding
-                                                    to the listed ids.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>show-by-id <replaceable class="parameter">arg...</replaceable></term>
-            <listitem>
-            <para>
-                                                    Displays the infos and children (if any) of all the CMIS objects corresponding
-                                                    to the listed ids.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>show-by-path <replaceable class="parameter">arg...</replaceable></term>
-            <listitem>
-            <para>
-                                                    Displays the infos and children (if any) of all the CMIS objects corresponding
-                                                    to the listed paths.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>delete <replaceable class="parameter">arg...</replaceable></term>
-            <listitem>
-            <para>
-                Deletes the CMIS objects corresponding to the listed ids. If the node
-                is a folder, its content will be removed as well.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>checkout <replaceable class="parameter">arg</replaceable></term>
-            <listitem>
-            <para>
-                Checkout the document corresponding to the provided id and display
-                the infos of the created private working copy.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>cancel-checkout <replaceable class="parameter">arg</replaceable></term>
-            <listitem>
-            <para>
-                Cancel the Private Working Copy corresponding to the node id.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>get-versions <replaceable class="parameter">arg</replaceable></term>
-            <listitem>
-            <para>
-                                                    Display the versions (if any) of all the CMIS object corresponding
-                                                    to the provided id.
-                                            </para>
-            </listitem>
-        </varlistentry>
-        <varlistentry>
-            <term>checkin <replaceable class="parameter">arg</replaceable></term>
-            <listitem>
-            <para>
-                Check in the private working copy corresponding to the provided id and display
-                the infos of the resulting document. Use the --major and --message options to
-                define the version to create and the commit to associate to it.
-
-                Note that repositories without the ability to update the private working copies
-                will need the --input-file, --input-type and --object-property options.
-                                            </para>
-            </listitem>
-        </varlistentry>
-      </variablelist>
-    </refsect2>
+    <variablelist>
+      <varlistentry>
+        <term>-h, --help</term>
+        <listitem>
+          <para>
+            Shows help information on commandline and exits.
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-e, --ignoreeof</term>
+        <listitem>
+          <para>
+            end of file allowed anywhere
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-i, --ignoreDefinites</term>
+        <listitem>
+          <para>
+            dont write variables to the output if they are only defined in basefile
+        </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-q, --quiet</term>
+        <listitem>
+          <para>no output to screen</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-s, --suppress</term>
+        <listitem>
+          <para>suppress output of comments</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-t, --trailing</term>
+        <listitem>
+          <para>save trailing comments at end of file</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-v, --verbose</term>
+        <listitem>
+          <para>maximum output to screen</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-V, --version</term>
+        <listitem>
+          <para>print fillup version and exit</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-nometadata, --nometadata</term>
+        <listitem>
+          <para>no metadata information merged: keep fillup 1.10 functionalty</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-f | --forbidden file</term>
+        <listitem>
+          <para>use file to forbid changes for given variables</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-c | --char char</term>
+        <listitem>
+          <para>use char as comment marker</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-l | --quote char</term>
+        <listitem>
+          <para>use char as quoting marker</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-d | --delim char</term>
+        <listitem>
+          <para>use char as delimiter</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-n, --num</term>
+        <listitem>
+          <para>check for max comment lines</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-p, --put</term>
+        <listitem>
+          <para>check for substitution (put)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-g, --get</term>
+        <listitem>
+          <para>check for extraction (get)</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-m, --maintain</term>
+        <listitem>
+          <para>check for maintaining the basefile</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-x, --exchange</term>
+        <listitem>
+          <para>check for exchange</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-r, --remove</term>
+        <listitem>
+          <para>check for removal within basefile</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>-a, --arguments</term>
+        <listitem>
+          <para>check for passed arguments</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </refsect1>
   <refsect1>
     <title>USAGE</title>
-    <para>Displays the root node of repository A1:</para>
-    <para><command>cmis-client</command> -r A1 --url http://localhost/atom show-root</para>
-    <para>Displays the nodes with id 133 and 116 of repository A1:</para>
-    <para><command>cmis-client</command> -r A1 --url http://localhost/atom show-by id 133 116</para>
+    <para><command>fillup</command> -m "/etc/rc.config" "my.config" "/etc/rc.config"</para>
+    <para>All variables of "/etc/rc.config" are passed to the resulting output file "/etc/rc.config".  Variables defined only within "my.config" are appended.</para>
+    <para><command>fillup</command> -exchange "/etc/rc.config" "my.config"</para>
+    <para>Only variables of "/etc/rc.config" that are not also defined within "my.config" are passed to the resulting output file "/etc/rc.config".  All variables of "my.config" are appended.</para>
+    <para><command>fillup</command> -m -r "/etc/rc.config" "my.config" "/etc/rc.config"</para>
+    <para>All  variables  of  "/etc/rc.config" are passed to the resulting output file "/etc/rc.config".  Variables defined only within "my.config" are appended.  The additional parameter '-r' removes variables
+        defined more than once from a copy of "/etc/rc.config".  "/etc/rc.config" isn't touched and the result of the removal is written to "/etc/rc.config.new".</para>
+    <para><command>fillup</command> -i "/etc/rc.config" "my.config"</para>
+    <para>This is a filter functionality. Variables of "/etc/rc.config" are only passed to the resulting output file "/etc/rc.config" if they are defined in both input files.  Because  "my.config"  is  normally
+        only a list of variable names from "/etc/rc.config", this is named filter functionality.  Additionally variables of "my.config" are appended if they are defined only in "my.config".</para>
+  </refsect1>
+  <refsect1>
+    <title>COPYRIGHT</title>
+    <para>fillup is copyright 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.</para>
   </refsect1>
   <refsect1>
     <title>AUTHOR</title>
     <para>
       <author>
-        <firstname>Cédric Bosdonnat</firstname>
-        <surname>cbosdo</surname>
-        <contrib>Original author</contrib>
+        <firstname>Martin Scherbaum</firstname>
+        <surname>maddin@suse.de</surname>
+        <contrib>Original author (1996)</contrib>
+      </author>
+    </para>
+    <para>
+      <author>
+        <firstname>Joerg Dippel</firstname>
+        <surname>jd@suse.de</surname>
+        <contrib>Further development (1998 - 2003)</contrib>
       </author>
     </para>
   </refsect1>

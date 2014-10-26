@@ -3,7 +3,6 @@ ACLOCAL_AMFLAGS = -I m4
 #SUBDIRS = test
 
 bin_PROGRAMS = fillup
-
 fillup_SOURCES = \
 	src/consume.c \
 	src/consume.h \
@@ -29,7 +28,22 @@ fillup_SOURCES = \
 	src/variableblock.c \
 	src/variableblock.h
 
+if WITH_LIBCMIS_MAN
+fillup.8: man/fillup.xml
+	$(DOCBOOK2MAN) $<
+
+install-man: fillup.8
+	mkdir -p $(DESTDIR)$(mandir)/man8/
+	$(INSTALL_DATA) fillup.8 $(DESTDIR)$(mandir)/man8/
+
+uninstall-man:
+	-rm -rf $(DESTDIR)$(mandir)/man8/
+endif
+
+dist_man_MANS = man/fillup.xml
+
 EXTRA_DIST = \
+	$(dist_man_MANS) \
 	LICENSE \
 	README.md \
 	autogen.sh
